@@ -1,20 +1,29 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Avalonia;
 using Avalonia.ReactiveUI;
+using RoadRollerRide.Models.Cars;
+using RoadRollerRide.Models;
+using RoadRollerRide.Models.Maps;
+using RoadRollerRide.Services;
 
 namespace RoadRollerRide.Desktop;
 
 class Program
 {
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
     [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+    public static void Main(string[] args)
+    {
+        DatabaseService databaseService = new DatabaseService();
+        Database database = databaseService.LoadDatabase();
 
-    // Avalonia configuration, don't remove; also used by visual designer.
+        List<Car> dirtRallyCars = databaseService.GetAllCarsForDirtRally(database);
+        List<Map> dirRallyMaps = databaseService.GetAllMapsForDirtRally(database);
+
+        BuildAvaloniaApp()
+            .StartWithClassicDesktopLifetime(args);
+    }
+
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()

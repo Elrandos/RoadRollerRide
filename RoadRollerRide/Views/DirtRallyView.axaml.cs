@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace RoadRollerRide.Views
 {
-    public partial class UserControl1 : UserControl
+    public partial class DirtRallyView : UserControl
     {
-        public UserControl1()
+        public DirtRallyView()
         {
             InitializeComponent();
         }

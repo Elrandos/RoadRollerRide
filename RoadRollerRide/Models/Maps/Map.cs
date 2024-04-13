@@ -11,6 +11,5 @@ namespace RoadRollerRide.Models.Maps
     {
         public string Name { get; set; }
         public string Location { get; set; }
-        public Games Game { get; set; }
     }
 }

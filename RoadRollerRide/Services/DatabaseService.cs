@@ -1,19 +1,16 @@
 ﻿using RoadRollerRide.Models;
 using System.IO;
 using Newtonsoft.Json;
-using System.Security.Cryptography;
 using System;
 using RoadRollerRide.Models.Cars;
 using System.Collections.Generic;
 using System.Linq;
-using RoadRollerRide.Enums;
-using System.Text;
-using System.Reflection;
+using RoadRollerRide.Interfaces.Services;
 using RoadRollerRide.Models.Maps;
 
 namespace RoadRollerRide.Services
 {
-    public class DatabaseService
+    public class DatabaseService : IDatabaseService
     {
         private string FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RoadRollerRide");
         string DatabaseFilePath = Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RoadRollerRide"), "database.json");
@@ -51,11 +48,11 @@ namespace RoadRollerRide.Services
 
         public List<Car> GetAllCarsForDirtRally(Database database)
         {
-            return database.Cars.Where(w=> w.Game == Games.DirtRally2).ToList();
+            return database.Cars.ToList();
         }
         public List<Map> GetAllMapsForDirtRally(Database database)
         {
-            return database.Maps.Where(w => w.Game == Games.DirtRally2).ToList();
+            return database.Maps.ToList();
         }
     }
 }

@@ -1,20 +1,29 @@
 ﻿using ReactiveUI;
+using RoadRollerRide.Views;
+using Avalonia;
 using System.Reactive;
+using System.Windows.Input;
 
 namespace RoadRollerRide.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
+    
     public string Greeting => "Witaj w RoadRollerRide!";
-    public ReactiveCommand<Unit, Unit> NextCommand { get; }
+    private readonly ReactiveCommand<Unit, Unit> _navigateToNewViewCommand;
+
+    public ICommand NavigateToNewViewCommand => _navigateToNewViewCommand;
+
 
     public MainViewModel()
     {
-        NextCommand = ReactiveCommand.Create(Next);
+        _navigateToNewViewCommand = ReactiveCommand.Create(NavigateToNewView);
     }
 
-    private void Next()
+    private void NavigateToNewView()
     {
-        // Do something when the button is clicked
+        var newView = new DirtRallyView();
+        var mainWindow = (MainWindow)Application.Current.Resources;
+        mainWindow.Content = newView;
     }
 }

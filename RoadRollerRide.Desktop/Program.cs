@@ -9,7 +9,7 @@ using RoadRollerRide.Services;
 
 namespace RoadRollerRide.Desktop;
 
-class Program
+static class Program
 {
     [STAThread]
     public static void Main(string[] args)
@@ -30,4 +30,5 @@ class Program
             .WithInterFont()
             .LogToTrace()
             .UseReactiveUI();
+    
 }

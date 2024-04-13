@@ -26,7 +26,7 @@
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
 
-			<Button Command="{Binding NavigateToNewViewCommand}" HorizontalAlignment="Center">
+            <Button x:Name="DirtRallyButton" Command="{Binding NavigateToNewViewCommand}" HorizontalAlignment="Center">
 				<Button.Template>
 					<ControlTemplate>
 						<Border x:Name="border" Background="Transparent" BorderThickness="5" Padding="5"

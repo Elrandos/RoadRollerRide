@@ -6,7 +6,7 @@ namespace RoadRollerRide.Models.Cars
 {
     public class Car
     {
-        public Guid CarId { get; set; }
+        public Guid Id { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
         public CarClassDirtRally Class { get; set; }
@@ -16,6 +16,5 @@ namespace RoadRollerRide.Models.Cars
         public int Cylinders { get; set; }
         public Transmission Transmission { get; set; }
         public int Year { get; set; }
-        public Games Game { get; set; }
     }
 }

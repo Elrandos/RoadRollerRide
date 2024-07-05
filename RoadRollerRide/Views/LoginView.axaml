@@ -35,7 +35,7 @@
 		<Button Content="Login" Grid.Row="4" Grid.Column="3" Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding LoginCommand}" HotKey="Enter"></Button>
 		<Button Content="Register" Grid.Row="4" Grid.Column="4" Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RegisterCommand}"></Button>
 
-		<Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Content="{Binding ErrorMessage}"
+		<Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Content="{Binding ErrorMessage}"
                FontSize="20" Foreground="Red"/>
 
 	</Grid>

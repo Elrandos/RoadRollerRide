@@ -11,6 +11,10 @@ namespace RoadRollerRide.ViewModels
     {
         private MainWindowViewModel _mainWindowViewModel;
         private readonly RandomService _randomService;
+        private Map _randomMap;
+        private Car _randomCar;
+
+
         public ReactiveCommand<Unit, Unit> RandomCarCommand { get; }
         public ReactiveCommand<Unit, Unit> RandomMapCommand { get; }
         public ReactiveCommand<Unit, Unit> RandomBothCommand { get; }
@@ -49,7 +53,18 @@ namespace RoadRollerRide.ViewModels
 
         private async Task GetRandomCar()
         {
-            var car = await _randomService.GetRandomCarAsync();
+            _randomCar = await _randomService.GetRandomCarAsync();
+
+        }
+        private async Task GetRandomMap()
+        {
+            _randomMap = await _randomService.GetRandomMapAsync();
+        }
+        private async Task GetRandomBoth()
+        {
+            _randomMap = await _randomService.GetRandomMapAsync();
+            _randomCar = await _randomService.GetRandomCarAsync();
+
 
         }
 

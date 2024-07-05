@@ -7,36 +7,42 @@
              x:Class="RoadRollerRide.Views.RegisterView"
              x:DataType="vm:RegisterViewModel">
 
-    <UserControl.Background>
-        <ImageBrush Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
-    </UserControl.Background>
+	<UserControl.Background>
+		<ImageBrush Source="/Assets/background2.jpg" Stretch="UniformToFill"/>
+	</UserControl.Background>
 
 	<Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-      <ColumnDefinition></ColumnDefinition>
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-    </Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
 
-    <Label Grid.Row="1" Grid.Column="1" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Username"></Label>
-    <TextBox Grid.Row="1" Grid.Column="2" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Username}"></TextBox>
-    <Label Grid.Row="2" Grid.Column="1" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Password"></Label>
-    <TextBox PasswordChar="*" Grid.Row="2" Grid.Column="2" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Password}"></TextBox>
-    
-    <Button Content="Register" Grid.Row="3" Grid.Column="2" Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RegisterCommand}"></Button>
-    <Button Content="Back" Grid.Row="4" Grid.Column="2" Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding BackCommand}"></Button>
+		<!--<Label Grid.Row="1" Grid.Column="1" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Username"></Label>
+		<TextBox Grid.Row="1" Grid.Column="2" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Username}"></TextBox>
+		<Label Grid.Row="2" Grid.Column="1" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Password"></Label>
+		<TextBox PasswordChar="*" Grid.Row="2" Grid.Column="2" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Password}"></TextBox>-->
 
-    <CheckBox Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="20" Content="Admin Account (for tests only)" IsChecked="{Binding IsAdmin}"/>
-		<Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Black" Content="{Binding ErrorMessage}"
-               FontSize="20" Foreground="Red"/>
-  </Grid>
+
+		
+		<Label Grid.Row="2" Grid.Column="3" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Username"></Label>
+		<TextBox Grid.Row="2" Grid.Column="4"  Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Username}"></TextBox>
+		<Label Grid.Row="3" Grid.Column="3" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Password"></Label>
+		<TextBox PasswordChar="*" Grid.Row="3" Grid.Column="4" Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Password}"></TextBox>
+		<Button Content="Register" Grid.Row="4" Grid.Column="3" Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding RegisterCommand}"></Button>
+		<Button Content="Back" Grid.Row="4" Grid.Column="4" Margin="20" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding BackCommand}"></Button>
+
+		<CheckBox Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Margin="20" Content="Admin Account (for tests only)" IsChecked="{Binding IsAdmin}"/>
+        <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Content="{Binding ErrorMessage}"
+        FontSize="20" Foreground="Red"/>
+	</Grid>
 </UserControl>

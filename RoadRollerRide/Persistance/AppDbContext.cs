@@ -15,6 +15,8 @@ namespace RoadRollerRide.Persistence
         public DbSet<Car> Cars { get; set; }
         public DbSet<Map> Maps { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Record> Records { get; set; }
+
 
         public Task<int> SaveChangesAsync()
         {

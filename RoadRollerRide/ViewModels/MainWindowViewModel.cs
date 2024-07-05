@@ -40,7 +40,7 @@ namespace RoadRollerRide.ViewModels
         }
         public void ShowRecords()
         {
-            CurrentView = new GameChooserViewModel(this, _appDbContext);
+            CurrentView = new RecordViewModel(this, _appDbContext);
         }
         //public void AddBooks()
         //{

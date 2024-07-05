@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RoadRollerRide.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RoadRollerRide.Views.RecordView"
+             x:DataType="viewModels:RecordViewModel">
+
+	<!--<UserControl.Background>
+		<ImageBrush Source="/Assets/background3.jpg" Stretch="UniformToFill"/>
+	</UserControl.Background>-->
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+
+
+		<DataGrid Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Grid.ColumnSpan="3" Margin="20" ItemsSource="{Binding Records}"
+                  IsReadOnly="True"
+                  CanUserReorderColumns="True"
+                  CanUserResizeColumns="True"
+                  CanUserSortColumns="False"
+                  GridLinesVisibility="All"
+                  BorderThickness="1"
+                  BorderBrush="Gray">
+			<DataGrid.Columns>
+                <DataGridTextColumn Header="No" Binding="{Binding Number}" Width="auto"/>
+				<DataGridTextColumn Header="Map" Binding="{Binding MapName}" Width="*"/>
+				<DataGridTextColumn Header="Car" Binding="{Binding CarName}" Width="*"/>
+				<DataGridTextColumn Header="Player" Binding="{Binding PlayerName}" Width="*" />
+				<DataGridTextColumn Header="Time" Binding="{Binding Time}" Width="*"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<Button Grid.Row="4"
+                Grid.Column="4"
+                Width="100"
+                Height="80"
+                FontSize="20"
+                Background="Black"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding BackCommand}">
+			<TextBlock Text="Back"
+					   TextWrapping="Wrap"
+					   TextAlignment="Center"
+					   VerticalAlignment="Center"
+					   HorizontalAlignment="Center"
+                       Foreground="Red"/>
+		</Button>
+	</Grid>
+</UserControl>
+
+

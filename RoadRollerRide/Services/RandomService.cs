@@ -1,24 +1,31 @@
-﻿using RoadRollerRide.Models.Cars;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Threading.Tasks;
-using RoadRollerRide.Interfaces.Services;
-using RoadRollerRide.Models.Maps;
+using RoadRollerRide.Models;
 
 namespace RoadRollerRide.Services
 {
-    public class RandomService : IRandomService
+    public class RandomService
     {
-        public Task<Car> GetRandomCarAsync(List<Car> cars)
+        private readonly CarService _carService;
+        private readonly MapService _mapService;
+        public RandomService(CarService carService, MapService mapService)
         {
+            _carService = carService;
+            _mapService = mapService;
+        }
+
+        public Task<Car> GetRandomCarAsync()
+        {
+            var cars = _carService.GetAll();
             var random = new Random();
             var randomIndex = random.Next(0, cars.Count);
 
             return Task.FromResult(cars[randomIndex]);
         }
 
-        public Task<Map> GetRandomMapAsync(List<Map> maps)
+        public Task<Map> GetRandomMapAsync()
         {
+            var maps = _mapService.GetAll();
             var random = new Random();
             var randomIndex = random.Next(0, maps.Count);
 

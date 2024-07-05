@@ -3,40 +3,109 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:RoadRollerRide.ViewModels"
-             xmlns:services="clr-namespace:RoadRollerRide.Services"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RoadRollerRide.Views.DirtRallyView"
              x:DataType="viewModels:DirtRallyViewModel">
 
-    <UserControl.DataContext>
-        <viewModels:DirtRallyViewModel>
-            <x:Arguments>
-                <services:RandomService/>
-                <services:DatabaseService/>
-            </x:Arguments>
-        </viewModels:DirtRallyViewModel>
-    </UserControl.DataContext>
+    <UserControl.Background>
+        <ImageBrush Source="/Assets/background3.jpg" Stretch="UniformToFill"/>
+    </UserControl.Background>
 
-    <Grid Margin="10,20,30,40">
-        <StackPanel>
-            <Button Command="{Binding RandomMapCommand}" Content="Losuj mapę"/>
-            <Button Command="{Binding RandomCarCommand}" Content="Losuj samochód"/>
-            <Button Command="{Binding RandomBothCommand}" Content="Losuj mapę i samochód"/>
-            <Button Command="{Binding ShowRecordsCommand}" Content="Rekordy"/>
-        </StackPanel>
-        <TextBlock Text="{Binding Result}" Margin="10" HorizontalAlignment="Center"/>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
 
+        <Button Grid.Row="0" 
+                Grid.Column="1" 
+                Width="140"
+                Height="50"
+                FontSize="20" 
+                Background="Black"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding RandomCarCommand}" 
+                Content="Random car"/>
 
-        <TextBlock Text="{Binding Car.Brand, StringFormat='Brand: {0}'}" Margin="10" HorizontalAlignment="Center"/>
-        <TextBlock Text="{Binding Car.Model, StringFormat='Model: {0}'}" Margin="10" HorizontalAlignment="Center"/>
+        <Button Grid.Row="0" 
+                Grid.Column="3"
+                Width="150"
+                Height="50"
+                FontSize="20"
+                Background="Black"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding RandomMapCommand}" 
+                Content="Random map"/>
+
+		<Button Grid.Row="0"
+                Grid.Column="5"
+                Width="140"
+                Height="50"
+                FontSize="20"
+                Background="Black"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding RandomBothCommand}"
+                Content="Random all">
+		</Button>
+		
+        <Button Grid.Row="0" 
+                Grid.Column="7"
+                Width="140"
+                Height="50"
+                FontSize="20"
+                Background="Black"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding ShowRecordsCommand}" 
+                Content="Rekordy"/>
+
+		<Button Grid.Row="0"
+                Grid.Column="8"
+                Grid.ColumnSpan="2"
+                Width="100"
+                Height="80"
+                FontSize="20"
+                Background="Black"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding ChangeGameCommand}">
+			<TextBlock Text="Change game"
+					   TextWrapping="Wrap"
+					   TextAlignment="Center"
+					   VerticalAlignment="Center"
+					   HorizontalAlignment="Center"
+                       Foreground="Red"/>
+		</Button>
 
 	</Grid>
-
-
-
-
-
-
 </UserControl>
 
 

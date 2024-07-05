@@ -2,11 +2,11 @@
 {
     public enum WeatherType
     {
-        Day,
-        Night,
-        Rain,
-        Snow,
-        Fog
+        Day = 0,
+        Night = 1,
+        Rain = 2,
+        Snow = 3,
+        Fog = 4
     }
 }
 

@@ -1,0 +1,92 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:RoadRollerRide.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RoadRollerRide.Views.GameChooserView"
+             x:DataType="vm:GameChooserViewModel">
+
+	<UserControl.Background>
+		<ImageBrush Source="/Assets/background.jpg" Stretch="UniformToFill"/>
+	</UserControl.Background>
+
+	<Grid Margin="10,20,30,40">
+
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+       
+        <Button Grid.Row="3" Grid.Column="4" x:Name="Ass" Command="{Binding }" HorizontalAlignment="Center">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="border" Background="Transparent" BorderThickness="5" Padding="5"
+                            Effect="{DynamicResource ShadowEffect}">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="100,30">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <TextBlock Text="Wybierz grę:" HorizontalAlignment="Center" Foreground="Red"
+                                   FontFamily="Cambria" FontSize="20" FontWeight="Bold"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+		<StackPanel Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+			
+            <Button x:Name="DirtRallyCommand" Command="{Binding DirtRallyCommand}" HorizontalAlignment="Center">
+				<Button.Template>
+					<ControlTemplate>
+						<Border x:Name="border" Background="Transparent" BorderThickness="5" Padding="5"
+                                Effect="{DynamicResource ShadowEffect}">
+							<Border.BorderBrush>
+								<LinearGradientBrush StartPoint="0,0" EndPoint="100,30">
+									<GradientStop Color="Black" Offset="0"/>
+									<GradientStop Color="White" Offset="1"/>
+								</LinearGradientBrush>
+							</Border.BorderBrush>
+							<TextBlock Text="Dirt Rally 2.0" HorizontalAlignment="Center" Foreground="Red"
+                                       FontFamily="Cambria" FontSize="20" FontWeight="Bold"/>
+						</Border>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+
+            
+		</StackPanel>
+
+        <Button Grid.Row="0" Grid.Column="4" x:Name="LogOut" Command="{Binding LogOutCommand}" HorizontalAlignment="Center">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border x:Name="border" Background="Transparent" BorderThickness="5" Padding="5"
+                            Effect="{DynamicResource ShadowEffect}">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="100,30">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <TextBlock Text="Log out" HorizontalAlignment="Center" Foreground="Red"
+                                   FontFamily="Cambria" FontSize="20" FontWeight="Bold"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+	</Grid>
+</UserControl>

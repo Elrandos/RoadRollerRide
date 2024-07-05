@@ -1,59 +1,68 @@
 ﻿using ReactiveUI;
 using System.Reactive;
-using RoadRollerRide.Interfaces.Services;
+using System.Threading.Tasks;
 using RoadRollerRide.Models;
+using RoadRollerRide.Services;
+using RoadRollerRide.Persistence;
 
 namespace RoadRollerRide.ViewModels
 {
     public class DirtRallyViewModel : ViewModelBase
     {
-        private string _result;
-        private readonly IRandomService _randomService;
-        private readonly IDatabaseService _databaseService;
+        private MainWindowViewModel _mainWindowViewModel;
+        private readonly RandomService _randomService;
+        public ReactiveCommand<Unit, Unit> RandomCarCommand { get; }
+        public ReactiveCommand<Unit, Unit> RandomMapCommand { get; }
+        public ReactiveCommand<Unit, Unit> RandomBothCommand { get; }
+        public ReactiveCommand<Unit, Task> ShowRecordsCommand { get; }
+        public ReactiveCommand<Unit, Task> ChangeGameCommand { get; }
 
-        public DirtRallyViewModel(IRandomService randomService, IDatabaseService databaseService)
+        public DirtRallyViewModel(MainWindowViewModel mainWindowViewModel, IAppDbContext appDbContext)
         {
-            _randomService = randomService;
-            _databaseService = databaseService;
-
+            _mainWindowViewModel = mainWindowViewModel;
             RandomCarCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                Database database = _databaseService.LoadDatabase();
-                var cars = _databaseService.GetAllCarsForDirtRally(database);
-                var choosenCar = await _randomService.GetRandomCarAsync(cars);
+                //var cars = _databaseService.GetAllCarsForDirtRally(database);
+                //var choosenCar = await _randomService.GetRandomCarAsync(cars);
+                var car = await _randomService.GetRandomCarAsync();
 
-                Result = $"Marka: {choosenCar.Brand}, Model: {choosenCar.Model}";
             });
 
             RandomMapCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                Database database = _databaseService.LoadDatabase();
-                var maps = _databaseService.GetAllMapsForDirtRally(database);
-                var choosenMap = await _randomService.GetRandomMapAsync(maps);
+                //var maps = _databaseService.GetAllMapsForDirtRally(database);
+                //var choosenMap = await _randomService.GetRandomMapAsync(maps);
 
-                Result = $"Marka: {choosenMap.Location}, Model: {choosenMap.Name}";
             });
 
-            RandomBothCommand = ReactiveCommand.Create(() =>
+            RandomBothCommand = ReactiveCommand.CreateFromTask(async () =>
             {
-                Result = "Wylosowano mapę i samochód";
+                //var maps = _databaseService.GetAllMapsForDirtRally(database);
+                //var choosenMap = await _randomService.GetRandomMapAsync(maps);
+
             });
 
-            ShowRecordsCommand = ReactiveCommand.Create(() =>
-            {
-                //kod przejścia do rekordów
-            });
+            ChangeGameCommand = ReactiveCommand.Create(ChangeGame);
+            ShowRecordsCommand = ReactiveCommand.Create(ShowRecords);
+
         }
 
-        public string Result
+        private async Task GetRandomCar()
         {
-            get => _result;
-            set => this.RaiseAndSetIfChanged(ref _result, value);
+            var car = await _randomService.GetRandomCarAsync();
+
         }
 
-        public ReactiveCommand<Unit, Unit> RandomMapCommand { get; }
-        public ReactiveCommand<Unit, Unit> RandomCarCommand { get; }
-        public ReactiveCommand<Unit, Unit> RandomBothCommand { get; }
-        public ReactiveCommand<Unit, Unit> ShowRecordsCommand { get; }
+        private Task ShowRecords()
+        {
+            _mainWindowViewModel.ShowRecords();
+            return Task.CompletedTask;
+        }
+
+        private Task ChangeGame()
+        {
+            _mainWindowViewModel.ShowGameChooser();
+            return Task.CompletedTask;
+        }
     }
 }
